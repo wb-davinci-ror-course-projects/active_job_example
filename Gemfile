@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'sidekiq'
+gem 'resque', "~> 1.22.0"
 
 gem 'sinatra', require: false
 gem 'slim'
