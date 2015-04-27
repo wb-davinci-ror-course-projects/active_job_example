@@ -19,6 +19,7 @@ class BuildingsController < ApplicationController
 
   def demolished_building
     building_name = Building.first.name
+    @buildings = Building.all
     if session[:building_name] == building_name
       redirect_to run_path, notice: 'You still have time!'
     end
@@ -77,17 +78,13 @@ class BuildingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_building
-      @building = Building.find(params[:id] || Building.first.id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_building
+    @building = Building.find(params[:id] || Building.first.id)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def building_params
-      params.require(:building).permit(:name)
-    end
-
-  # def create_twin(building)
-  #   Building.create!(name: building.name)
-  # end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def building_params
+    params.require(:building).permit(:name)
+  end
 end

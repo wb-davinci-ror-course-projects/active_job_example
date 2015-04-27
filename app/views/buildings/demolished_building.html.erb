@@ -1,3 +1,9 @@
 
 <%= image_tag 'demolished_building' %>
 <% %x(say "Kaboom!") %>
+<div class='pull-right'>
+  Buildings:
+  <% @buildings.each do |building| %>
+    <li><%= building.name %></li>
+  <% end %>
+</div>$

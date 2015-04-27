@@ -1,10 +1,15 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+
   resources :buildings
 
   root "buildings#show"
 
   get 'demolished_building', to: 'buildings#demolished_building'
   get 'run', to: 'buildings#run', as: 'run'
+
+  mount Sidekiq::Web, at: '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
